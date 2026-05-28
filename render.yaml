@@ -5,17 +5,21 @@ services:
     plan: free
     region: oregon
     buildCommand: npm ci && npm run build
-    # Render assigns the port via $PORT; the package.json `start` script
-    # uses -p 3001 for local consistency, override here.
     startCommand: npx next start -p $PORT
     envVars:
       - key: NODE_VERSION
         value: '24'
+      # Skip husky's prepare-script git-hook install. Husky errors out
+      # in many CI/CD environments and crashes `npm ci`, which is the
+      # single most common cause of "application exited early" on
+      # Forum One starter deploys.
+      - key: HUSKY
+        value: '0'
       # Theme mode. Set to 'json' for Mechanism A demo, 'link' for B,
       # or 'none' for native brand.
       - key: NEXT_PUBLIC_THEME_MODE
         value: json
-      # Used only when NEXT_PUBLIC_THEME_MODE=link. Point at the shell's
-      # deployed /brand/overrides.css URL.
+      # Used only when NEXT_PUBLIC_THEME_MODE=link. Point at the
+      # shell's deployed /brand/overrides.css URL.
       - key: NEXT_PUBLIC_SHELL_BRAND_URL
         value: https://shell-poc1.onrender.com/brand/overrides.css
