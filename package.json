@@ -3,9 +3,9 @@
   "version": "2.3.4",
   "private": true,
   "scripts": {
-    "dev": "next dev --webpack",
+    "dev": "next dev --webpack -p 3001",
     "build": "next build --webpack",
-    "start": "next start",
+    "start": "next start -p 3001",
     "export": "npm run build && next export",
     "typegen": "next typegen",
     "lint": "eslint \"app/**\" \"source/**\" \"util/**\" && stylelint \"source/**/*.css\"",

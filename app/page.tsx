@@ -1,72 +1,120 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
-import heroPlaceholder from '~/public/images/hero-placeholder.jpg';
-import HeroBgImage from '~components/HeroBgImage/HeroBgImage';
-import Wysiwyg from '~components/Wysiwyg/Wysiwyg';
-import Section from '~layouts/Section/Section';
-import LandingPage from '~templates/LandingPage/LandingPage';
+import { Button, LinkButton } from '~components/Button/Button';
+import Card from '~components/Card/Card';
+import styles from './tool.module.css';
 
-const title = 'Forum One Next.js Starter App';
+const title = 'AI Assistant — third-party tool';
 
 export const metadata: Metadata = {
   title,
-  description: 'Next app using TypeScript and PostCSS',
+  description:
+    'POC stand-in for the third-party AI tool. The shell rebrands this surface via DTCG JSON upload (Mechanism A) or a shell-hosted CSS link (Mechanism B).',
 };
 
-function Home() {
+function Tool() {
   return (
-    <LandingPage title={title}>
-      <Section>
-        <HeroBgImage
-          hasOverlay={true}
-          title={title}
-          heroImage={
-            <Image
-              src={heroPlaceholder}
-              alt="Alt text goes here"
-              width={1600}
-              height={800}
-            />
-          }
-        />
-      </Section>
-      <Section>
-        <Wysiwyg>
-          <p>
-            Quibusdam reprehenderit vestibulum magnam congue alias, purus
-            quisque, harum. Faucibus dolorum malesuada velit quae, faucibus.
-            Laudantium, beatae doloremque, sociis sagittis primis lacinia
-            eiusmod exercitation cupiditate nisl perferendis. Amet. Consectetuer
-            quas faucibus repellat, eaque sociis malesuada molestiae, nisl
-            recusandae vehicula mollis. Alias molestie! Unde vestibulum nec,
-            neque totam ipsam! Montes tempor reiciendis non aliqua ridiculus,
-            numquam rutrum, vulputate volutpat mus labore.
-          </p>
+    <main className={styles.main}>
+      <header className={styles.toolbar}>
+        <div className={styles.brand}>
+          <span className={styles.badge}>AI</span>
+          <span className={styles.title}>Assistant</span>
+        </div>
+        <nav className={styles.nav}>
+          <a href="#">History</a>
+          <a href="#">Saved prompts</a>
+          <a href="#">Settings</a>
+        </nav>
+      </header>
 
-          <p>
-            Repellat veniam aperiam ornare harum litora natus modi, doloribus
-            autem aute volutpat? Ridiculus vestibulum nostrud mattis nihil mi
-            sociis quidem. Magna proident error libero! Voluptates earum! Eum.
-            Praesentium quasi ultrices, senectus vero? Eros ea consequatur
-            omnis! Cillum dolorem augue. Rhoncus quasi aenean luctus nec
-            aliquid, alias neque minus? Animi litora massa aperiam veritatis
-            eveniet tortor aptent fugiat aenean sapien doloribus.
-          </p>
+      <section className={styles.section}>
+        <h1>Ask the assistant</h1>
+        <p>
+          This is a stand-in for the third-party tool. The visual brand —
+          colors, typography, and accents — is supplied from outside this
+          codebase, by the shell application. Try the two themes by changing
+          presets in the shell admin.
+        </p>
 
-          <p>
-            Lorem rutrum expedita sociis occaecati! Reprehenderit quasi,
-            sagittis quisque reiciendis, ornare nostra, tempora aut justo ante.
-            At, dignissim. Posuere! Deserunt, laoreet, integer. Dolores
-            laudantium, excepteur cubilia aspernatur tempor quisque tortor,
-            torquent, rhoncus vel cupiditate nibh aliqua, deserunt maecenas
-            exercitation culpa! Venenatis irure reiciendis rem reprehenderit
-            phasellus elementum rem? Repellat! Congue ipsum ante vestibulum
-            aliquet sapien dapibus! Fugit hac, aenean nobis.
-          </p>
-        </Wysiwyg>
-      </Section>
-    </LandingPage>
+        <form className={styles.prompt} aria-label="Prompt form">
+          <label htmlFor="prompt">Prompt</label>
+          <textarea
+            id="prompt"
+            name="prompt"
+            rows={4}
+            placeholder="Summarize the latest agency policy memo…"
+            defaultValue=""
+          />
+          <div className={styles.actions}>
+            <Button label="Send" variant="primary" />
+            <Button label="Save draft" variant="secondary" />
+            <Button label="Clear" variant="danger" />
+          </div>
+        </form>
+      </section>
+
+      <section className={styles.section}>
+        <h2>Recent responses</h2>
+        <div className={styles.cards}>
+          <Card
+            title="Policy summary"
+            date="2026-05-12"
+            url="#"
+            readMore
+            tags={[
+              { title: 'policy', url: '#' },
+              { title: 'briefing', url: '#' },
+            ]}
+          >
+            <p>
+              The agency has updated guidance on remote-work eligibility. Key
+              changes include expanded telework for grade GS-13 and above…
+            </p>
+          </Card>
+          <Card
+            title="Meeting minutes"
+            date="2026-05-09"
+            url="#"
+            readMore
+            tags={[{ title: 'minutes', url: '#' }]}
+          >
+            <p>
+              The Wednesday standing meeting covered Q3 milestones, budget
+              reallocations, and the upcoming compliance review…
+            </p>
+          </Card>
+          <Card
+            title="Memo draft"
+            date="2026-05-04"
+            url="#"
+            readMore
+            tags={[
+              { title: 'draft', url: '#' },
+              { title: 'urgent', url: '#' },
+            ]}
+          >
+            <p>
+              Draft memo to leadership outlining the proposed shell-application
+              integration. Three options are considered…
+            </p>
+          </Card>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <h2>Useful links</h2>
+        <p>
+          <a href="#">Documentation</a>
+          {' · '}
+          <a href="#">API reference</a>
+          {' · '}
+          <a href="#">Contact support</a>
+        </p>
+        <div>
+          <LinkButton label="Open dashboard" href="#" variant="primary" />
+        </div>
+      </section>
+    </main>
   );
 }
 
-export default Home;
+export default Tool;

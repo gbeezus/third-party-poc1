@@ -41,3 +41,6 @@ tsconfig.tsbuildinfo
 # Storybook build files
 storybook-static/
 debug-storybook.log
+
+# POC 1: persisted DTCG theme uploaded via /api/theme
+/.data/

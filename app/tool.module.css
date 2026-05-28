@@ -1,0 +1,104 @@
+.main {
+  background: var(--background-site);
+  color: var(--text-primary);
+  font-family: var(--font-family-primary);
+  min-height: 100vh;
+  padding: 0;
+}
+
+.toolbar {
+  align-items: center;
+  background: var(--brand-blue-dark-1);
+  color: var(--text-on-dark);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  font-size: var(--font-size-5);
+  font-weight: var(--font-weight-bold);
+  gap: 0.75rem;
+}
+
+.badge {
+  background: var(--brand-ocean-blue-base);
+  border-radius: 0.25rem;
+  color: var(--brand-blue-dark-1);
+  font-size: var(--font-size-2);
+  letter-spacing: var(--letterspacing-wide);
+  padding: 0.25rem 0.5rem;
+}
+
+.title {
+  font-weight: var(--font-weight-semibold);
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  border-bottom: 2px solid transparent;
+  color: var(--text-on-dark);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  border-bottom-color: var(--brand-ocean-blue-base);
+}
+
+.section {
+  margin: 0 auto;
+  max-width: 64rem;
+  padding: 2.5rem 2rem;
+}
+
+.section h1,
+.section h2 {
+  color: var(--brand-blue-dark);
+  margin-top: 0;
+}
+
+.prompt {
+  background: var(--grayscale-white);
+  border: 1px solid var(--ui-border-light);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+}
+
+.prompt label {
+  font-weight: var(--font-weight-semibold);
+}
+
+.prompt textarea {
+  border: 1px solid var(--ui-border);
+  border-radius: 0.25rem;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-3);
+  padding: 0.75rem;
+  resize: vertical;
+}
+
+.prompt textarea:focus {
+  outline: 2px solid var(--ui-focus);
+  outline-offset: 1px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cards {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
